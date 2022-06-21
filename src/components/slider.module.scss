@@ -1,5 +1,6 @@
 @use '/src/styles/mixins/flexbox';
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
 
 .sliderWrap {
   display: flex;
@@ -61,19 +62,25 @@
       }
 
       &btn25 {
-        left: 24.3%;
+        left: 24.6%;
       }
 
       &btn50 {
-        left: 48.7%;
+        left: 49.2%;
       }
 
       &btn75 {
-        left: 73.2%;
+        left: 74.2%;
       }
 
       &btn100 {
         left: 97.6%;
+        // @include responsive.between(HD, '1500') {
+        //   left: 98.6%;
+        // }
+        @include responsive.after(SHD1) {
+          left: 98.6%;
+        }
       }
     }
   }

@@ -11,6 +11,8 @@
     @return 1200px;
   } @else if $media == HD {
     @return 1300px;
+  } @else if $media == SHD1 {
+    @return 1500px;
   } @else if $media == SHD {
     @return 1800px;
   } @else if $media == QHD {

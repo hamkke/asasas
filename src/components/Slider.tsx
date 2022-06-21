@@ -16,7 +16,7 @@ const Slider = () => {
   }
 
   const handleBG = (idx: number) => {
-    return ratio > 25 * idx ? 'black' : ''
+    return ratio >= 22 * idx ? 'black' : ''
   }
 
   return (
