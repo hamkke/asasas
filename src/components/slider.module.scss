@@ -1,0 +1,92 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.sliderWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  padding: 40px 10px;
+  margin-top: 5vh;
+  border: 3px solid colors.$BLACK;
+
+  & h1 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .barWrap {
+    position: relative;
+    width: 50%;
+    margin: 30px 0;
+
+    .bar {
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 101%;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+      width: 18px;
+      height: 18px;
+      margin-top: -4px;
+      cursor: pointer;
+      background-color: colors.$BLACK;
+      -webkit-appearance: none;
+      border-radius: 10px;
+    }
+
+    .pointDot {
+      position: absolute;
+      top: -3px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      background-color: colors.$MAIN;
+      border-radius: 10px;
+    }
+
+    .point {
+      &btn1 {
+        left: 1%;
+      }
+
+      &btn25 {
+        left: 24.3%;
+      }
+
+      &btn50 {
+        left: 48.7%;
+      }
+
+      &btn75 {
+        left: 73.2%;
+      }
+
+      &btn100 {
+        left: 97.6%;
+      }
+    }
+  }
+
+  .numBtnWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 54%;
+    margin-left: 18px;
+
+    .numBtn {
+      padding: 6px 16px;
+      border: 3px solid colors.$MAIN;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@use '/src/styles/constants/colors';
+
+.toggleWrap {
+  position: relative;
+  display: flex;
+  width: 80%;
+  margin-top: 5vh;
+  text-align: center;
+  border: 3px solid colors.$BLACK;
+  border-radius: 50px;
+
+  label {
+    z-index: 1;
+    width: 50%;
+    padding: 20px;
+    font-size: 30px;
+    color: colors.$PURPLE;
+    cursor: pointer;
+  }
+
+  input:checked + label {
+    color: colors.$BLACK;
+  }
+
+  input {
+    display: none;
+  }
+
+  input.first:checked ~ .switch {
+    left: 0;
+  }
+
+  input.second:checked ~ .switch {
+    left: 50%;
+  }
+
+  .switch {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: colors.$MAIN;
+    border-radius: 50px;
+    transition: all 0.2s;
+  }
+}
