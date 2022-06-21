@@ -75,9 +75,7 @@
 
       &btn100 {
         left: 97.6%;
-        // @include responsive.between(HD, '1500') {
-        //   left: 98.6%;
-        // }
+
         @include responsive.after(SHD1) {
           left: 98.6%;
         }
