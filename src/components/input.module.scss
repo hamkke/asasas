@@ -1,0 +1,64 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
+.inputWrap {
+  flex-direction: column;
+  width: 80%;
+  padding: 20px;
+  margin-top: 5vh;
+  border: 3px solid colors.$BLACK;
+  @include flexbox.flexbox(center, center);
+
+  .userForm {
+    position: relative;
+    width: 50%;
+
+    &:last-child {
+      margin-top: 4vh;
+    }
+
+    .paragraph {
+      position: absolute;
+      bottom: 0;
+      margin: 10px 0 0 22px;
+      font-weight: bold;
+      color: colors.$GRAY6;
+      opacity: 0;
+
+      &.showParagraph {
+        bottom: -26px;
+        opacity: 1;
+        transition: all 0.2s;
+      }
+    }
+
+    & label {
+      font-size: 22px;
+    }
+
+    .inputFlexbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 20px;
+      margin-top: 10px;
+      border: 3px solid colors.$BLACK;
+
+      & input {
+        width: 100%;
+        font-size: 20px;
+      }
+
+      & svg {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+
+        &.correctEmail {
+          fill: colors.$MAIN;
+        }
+      }
+    }
+  }
+}
