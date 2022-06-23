@@ -1,0 +1,75 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
+.dropdownWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  padding: 20px;
+  margin-top: 5vh;
+  border: 3px solid colors.$BLACK;
+
+  .titleWrap {
+    width: 50%;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid colors.$BLACK;
+    @include flexbox.flexbox(between, center);
+
+    & svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .listWrap {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 20px;
+    opacity: 1;
+    transition: all 0.2s;
+    transform: translateY(0);
+
+    &.closeDropdown {
+      opacity: 0;
+      transition: all 0.2s;
+      transform: translateY(-1vh);
+    }
+
+    .inputWrap {
+      display: flex;
+      padding: 5px 10px;
+      border-bottom: 3px solid colors.$BLACK;
+
+      & svg {
+        width: 30px;
+        height: 30px;
+        margin-right: 14px;
+      }
+
+      .searchInput {
+        width: 100%;
+        font-size: 20px;
+      }
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 20px;
+
+      & li {
+        padding: 7px 0;
+        font-size: 20px;
+
+        &:hover {
+          color: colors.$MAIN;
+        }
+      }
+    }
+  }
+}
