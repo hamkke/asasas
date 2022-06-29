@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useState } from 'react'
+import { ChangeEvent, MouseEvent, useEffect, useState, useRef } from 'react'
 import styles from './dropdown.module.scss'
 import cx from 'classnames'
 import { SearchIcon, ArrowDIcon } from 'assets/svgs'
@@ -9,6 +9,7 @@ const Dropdown = () => {
   const [searchTxt, setsearchTxt] = useState('')
   const [title, setTitle] = useState('이제 곧 여름이다')
   const [openDropdown, setOpenDropdown] = useState(false)
+  const isOutsideClick = useRef<HTMLDivElement>(null)
 
   const handleOpenDropdown = () => {
     setOpenDropdown((prev) => !prev)
@@ -22,6 +23,16 @@ const Dropdown = () => {
     setOpenDropdown(false)
     setTitle(e.currentTarget.value)
   }
+
+  useEffect(() => {
+    const handleOutsideClick = (e: any) => {
+      if (openDropdown && !isOutsideClick.current?.contains(e.target)) setOpenDropdown(false)
+    }
+    document.addEventListener('mousedown', handleOutsideClick)
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+    }
+  }, [openDropdown])
   return (
     <div className={styles.dropdownWrap}>
       <div className={styles.titleWrap}>
@@ -31,7 +42,7 @@ const Dropdown = () => {
         </button>
       </div>
 
-      <div className={cx(styles.listWrap, { [styles.closeDropdown]: !openDropdown })}>
+      <div className={cx(styles.listWrap, { [styles.closeDropdown]: !openDropdown })} ref={isOutsideClick}>
         <div className={styles.inputWrap}>
           <SearchIcon />
           <input type='text' placeholder='검색어 입력' className={styles.searchInput} onChange={handelsearchTxt} />
